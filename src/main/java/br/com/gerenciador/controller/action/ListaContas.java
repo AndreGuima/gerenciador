@@ -10,12 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.gerenciador.controller.action.interfaces.Acao;
 import br.com.gerenciador.model.BancoDeDados;
 import br.com.gerenciador.model.Conta;
+import br.com.gerenciador.model.Usuario;
 
 public class ListaContas implements Acao {
 
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BancoDeDados banco = new BancoDeDados();
-		List<Conta> lista = banco.getContas();
+		List<Usuario> usuarios = banco.getUsuarios();
+		
+		List<Conta> lista = usuarios.get(0).getContas();
 
 		request.setAttribute("contas", lista);
 

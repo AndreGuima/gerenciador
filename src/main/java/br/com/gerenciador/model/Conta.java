@@ -1,5 +1,6 @@
 package br.com.gerenciador.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Conta {
@@ -8,6 +9,7 @@ public class Conta {
 	private String nome;
 	private Date dataAbertura = new Date();
 	private Double valorTotal;
+	private ArrayList<Investimento> listaInvestimentos = new ArrayList<Investimento>(); 
 
 	public Integer getId() {
 		return id;
@@ -37,8 +39,11 @@ public class Conta {
 		return valorTotal;
 	}
 
-	public void setValorTotal(Double valorTotal) {
-		this.valorTotal = valorTotal;
+	public ArrayList<Investimento> getListaInvestimentos() {
+		return listaInvestimentos;
 	}
 
+	public void addInvestimento(Investimento investimento) {
+		this.listaInvestimentos.add(investimento);
+	}
 }
