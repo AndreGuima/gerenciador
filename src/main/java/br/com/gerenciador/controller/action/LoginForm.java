@@ -7,21 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.gerenciador.controller.action.interfaces.Acao;
-import br.com.gerenciador.model.BancoDeDados;
-import br.com.gerenciador.model.Conta;
 
-public class MostraConta implements Acao {
+public class LoginForm implements Acao {
 
+	@Override
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String paramId = request.getParameter("id");
-		Integer id = Integer.valueOf(paramId);
-
-		BancoDeDados banco = new BancoDeDados();
-		Conta conta = banco.buscaById(id);
-		request.setAttribute("conta", conta);
-
-		return "forward:formAlteraConta.jsp";
+		return "forward:formLogin.jsp";
 	}
 
 }
