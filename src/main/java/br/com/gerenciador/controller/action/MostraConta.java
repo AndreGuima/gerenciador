@@ -14,8 +14,6 @@ public class MostraConta implements Acao {
 
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("Mostra Conta");
-
 		String paramId = request.getParameter("id");
 		Integer id = Integer.valueOf(paramId);
 

@@ -7,7 +7,7 @@
 <title>Login</title>
 </head>
 <body>
-	Login
+	<h1>Realize o seu Login</h1>
 
 	<form action="${linkEntradaServlet}" method="post">
 		Login: <input type="text" name="login" /> 

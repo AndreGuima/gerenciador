@@ -13,8 +13,10 @@
 <title>Lista Contas</title>
 </head>
 <body>
+	<h1>Usuario logado: ${ usuarioLogado.login }</h1>
+	
 	<c:if test="${not empty conta}">
-		<h1>Conta ${ conta } cadastrada com sucesso!</h1>
+		<h2>Conta ${ conta } cadastrada com sucesso!</h2>
 	</c:if>
 	<h2>Lista de Contas</h2>
 	<ul>

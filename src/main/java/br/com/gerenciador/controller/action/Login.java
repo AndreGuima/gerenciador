@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.gerenciador.controller.action.interfaces.Acao;
 import br.com.gerenciador.model.BancoDeDados;
@@ -19,12 +20,12 @@ public class Login implements Acao {
 		String senha = request.getParameter("senha");		
 		
 		BancoDeDados bancoDeDados = new BancoDeDados();
-		Usuario usuario = bancoDeDados.existeUsuario(login,senha);
+		Usuario usuario = bancoDeDados.validaCredenciaisUsuario(login,senha);
 		
-		if (usuario != null) {
-			System.out.println("Usuario valido");
+		if (usuario != null) {			
 			System.out.println("Logando " + login);
-			
+			HttpSession sessao = request.getSession();
+			sessao.setAttribute("usuarioLogado", usuario);
 			return "redirect:entrada?acao=ListaContas";
 			
 		} else {
