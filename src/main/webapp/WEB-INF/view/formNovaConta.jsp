@@ -7,7 +7,10 @@
 <title>Nova Conta</title>
 </head>
 <body>
-	Cadastro de nova conta
+	<h1>
+		Cadastro de nova conta
+		<c:import url="logout.jsp" />
+	</h1>
 
 	<form action="${linkEntradaServlet}" method="post">
 		Nome: <input type="text" name="nome" /> Data Abertura: <input
