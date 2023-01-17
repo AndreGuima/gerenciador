@@ -13,7 +13,10 @@
 <title>Lista Contas</title>
 </head>
 <body>
-	<h1>Usuario logado: ${ usuarioLogado.login }</h1>
+	<h1>Usuario logado: ${ usuarioLogado.login }
+		<!-- <a href="${linkEntradaServlet}?acao=Logout">Sair</a> -->
+		<c:import url="logout.jsp" />
+	</h1>
 	
 	<c:if test="${not empty conta}">
 		<h2>Conta ${ conta } cadastrada com sucesso!</h2>
