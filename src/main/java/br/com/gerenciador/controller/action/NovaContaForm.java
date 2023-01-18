@@ -12,7 +12,7 @@ public class NovaContaForm implements Acao {
 
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("Nova Conta Form");
+		System.out.println("NovaContaForm");
 
 		return "forward:formNovaConta.jsp";
 	}
