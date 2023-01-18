@@ -9,20 +9,22 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-@WebFilter(urlPatterns = "/entrada")
+//@WebFilter(urlPatterns = "/entrada")
 public class MonitoramentoFilter implements Filter {
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain fchain) throws IOException, ServletException {
-
+		
+		System.out.println("MonitoramentoFilter");
+		
 		long antesTimeMillis = System.currentTimeMillis();
 		String acao = request.getParameter("acao");
-		
-		//segue adiante, executa a action
+
+		// segue adiante, executa a action
 		fchain.doFilter(request, response);
-		
+
 		long depoisTimeMillis = System.currentTimeMillis();
-		System.out.println("tempo de execução da ação: " + acao + ": "+ (depoisTimeMillis - antesTimeMillis));
+		System.out.println("tempo de execução da ação: " + acao + ": " + (depoisTimeMillis - antesTimeMillis));
 	}
 
 }

@@ -17,7 +17,7 @@ public class NovaConta implements Acao {
 
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("Nova Conta");
+		System.out.println("NovaConta");
 
 		String paramNomeConta = request.getParameter("nome");
 		String paramDataAbertura = request.getParameter("dataAbertura");
