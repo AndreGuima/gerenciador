@@ -1,17 +1,17 @@
 package br.com.gerenciador.controller.action;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.gerenciador.controller.action.interfaces.Acao;
 import br.com.gerenciador.model.BancoDeDados;
 import br.com.gerenciador.model.Conta;
+import br.com.gerenciador.model.Usuario;
 
 public class NovaConta implements Acao {
 
@@ -19,23 +19,16 @@ public class NovaConta implements Acao {
 
 		System.out.println("NovaConta");
 
+		HttpSession sessao = request.getSession();
+		Usuario usuarioLogado = (Usuario) sessao.getAttribute("usuarioLogado");
 		String paramNomeConta = request.getParameter("nome");
-		String paramDataAbertura = request.getParameter("dataAbertura");
 
-		Date dataAbertura = null;
-		try {
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			dataAbertura = sdf.parse(paramDataAbertura);
-		} catch (ParseException e) {
-			throw new ServletException();
-		}
-
-		Conta conta = new Conta();
+		Conta conta = new Conta();		
 		conta.setNome(paramNomeConta);
-		conta.setDataAbertura(dataAbertura);
+		conta.setDataAbertura(new Date());
 
 		BancoDeDados banco = new BancoDeDados();
-		banco.adiciona(conta);
+		banco.adicionaConta(usuarioLogado, conta);
 		request.setAttribute("conta", conta.getNome());
 
 		return "redirect:entrada?acao=ListaContas";
