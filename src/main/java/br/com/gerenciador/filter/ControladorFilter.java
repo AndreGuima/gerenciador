@@ -8,11 +8,9 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import br.com.gerenciador.controller.action.interfaces.Acao;
 
@@ -21,10 +19,18 @@ public class ControladorFilter extends HttpFilter implements Filter {
 
 	private static final long serialVersionUID = 1L;
 
+	@Override
+	public void init() throws ServletException {
+	}
+
+	@Override
+	public void destroy() {
+	}
+
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
-		
+
 		System.out.println("ControladorFilter");
-		
+
 		HttpServletRequest request = (HttpServletRequest) servletRequest;
 		HttpServletResponse response = (HttpServletResponse) servletResponse;
 

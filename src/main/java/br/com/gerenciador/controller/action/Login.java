@@ -17,7 +17,7 @@ public class Login implements Acao {
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String login = request.getParameter("login");
-		String senha = request.getParameter("senha");		
+		String senha = request.getParameter("password");		
 		
 		BancoDeDados bancoDeDados = new BancoDeDados();
 		Usuario usuario = bancoDeDados.validaCredenciaisUsuario(login,senha);

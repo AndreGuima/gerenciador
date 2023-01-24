@@ -11,32 +11,28 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.gerenciador.controller.action.interfaces.Acao;
 import br.com.gerenciador.model.BancoDeDados;
-import br.com.gerenciador.model.Conta;
+import br.com.gerenciador.model.Usuario;
 
-public class AlteraConta implements Acao {
+public class NovoUsuario implements Acao {
 
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		System.out.println("NovoUsuario");
+
 		String paramNomeConta = request.getParameter("nome");
-		String paramDataAbertura = request.getParameter("dataAbertura");
-		String paramId = request.getParameter("id");
-		Integer id = Integer.valueOf(paramId);
-
-		Date dataAbertura = null;
-
-		try {
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			dataAbertura = sdf.parse(paramDataAbertura);
-		} catch (ParseException e) {
-			throw new ServletException();
-		}
+		String paramLogin = request.getParameter("login");
+		String paramSenha = request.getParameter("password");
+		
+		Usuario usuario = new Usuario();
+		usuario.setNome(paramNomeConta);
+		usuario.setLogin(paramLogin);
+		usuario.setDataCadastro(new Date());
+		usuario.setSenha(paramSenha);
 
 		BancoDeDados banco = new BancoDeDados();
-		Conta conta = banco.buscaContaById(id);
-		conta.setNome(paramNomeConta);
-		conta.setDataAbertura(dataAbertura);
+		banco.criaUsuario(usuario);		
 
-		return "redirect:entrada?acao=ListaContas";
+		return "redirect:entrada?acao=LoginForm";
 	}
 
 }

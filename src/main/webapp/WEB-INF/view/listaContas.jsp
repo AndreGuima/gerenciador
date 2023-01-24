@@ -10,13 +10,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Lista Contas</title>
+<title>GCF - Suas Contas</title>
+
+<link rel="stylesheet" href="<c:url value="/resources/css/reset.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="https://fonts.googleapis.com/css?family=Montserrat&display=swap"/>">
 </head>
 <body>
-	<h1>Usuario logado: ${ usuarioLogado.login }
-		<!-- <a href="${linkEntradaServlet}?acao=Logout">Sair</a> -->
-		<c:import url="logout.jsp" />
-	</h1>
+	<header>
+		<c:import url="logout.jsp" />							
+		<nav>
+			<ul>					
+				<li><a href="${linkEntradaServlet}?acao=NovoUsuarioForm">Cadastre-se</a></li>
+			</ul>
+		</nav>		
+	</header>
+	
 	
 	<c:if test="${not empty conta}">
 		<h2>Conta ${ conta } cadastrada com sucesso!</h2>

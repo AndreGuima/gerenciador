@@ -2,10 +2,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <c:url value="/entrada" var="linkEntradaServlet" />
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Nova Conta</title>
+<title>GCF - Alterar Conta</title>
+
+<link rel="stylesheet" href="<c:url value="/resources/css/reset.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="https://fonts.googleapis.com/css?family=Montserrat&display=swap"/>">
+	
 </head>
 <body>
 	<h1>
