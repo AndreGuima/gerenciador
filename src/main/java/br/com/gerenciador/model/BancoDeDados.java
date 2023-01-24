@@ -9,7 +9,8 @@ public class BancoDeDados {
 	private static List<Usuario> listaUsuarios = new ArrayList<>();
 	private static List<Conta> listaContas = new ArrayList<>();
 	private static List<Investimento> listaInvestimentos = new ArrayList<>();
-	private static Integer chaveSequencial = 1;
+	private static Integer chaveSequencialConta = 1;
+	private static Integer chaveSequencialUsuario = 1;
 
 	static {
 		try {
@@ -19,16 +20,18 @@ public class BancoDeDados {
 			listaInvestimentos.add(inv1);
 
 			Conta conta1 = new Conta();
-			conta1.setId(BancoDeDados.chaveSequencial++);
+			conta1.setId(BancoDeDados.chaveSequencialConta++);
 			conta1.setNome("PicPay");
 			conta1.addInvestimento(inv1);
 			listaContas.add(conta1);
 
-			Usuario andre = new Usuario();
-			andre.setLogin("andre");
-			andre.setSenha("321654");
-			andre.addConta(conta1);
-			listaUsuarios.add(andre);
+			Usuario usuario1 = new Usuario();
+			usuario1.setId(chaveSequencialUsuario++);
+			usuario1.setNome("André");
+			usuario1.setLogin("andre");
+			usuario1.setSenha("321654");
+			usuario1.addConta(conta1);
+			listaUsuarios.add(usuario1);
 
 			Investimento inv2 = new Investimento();
 			inv2.setNome("Tesouro Direto IPCA+2035");
@@ -36,22 +39,23 @@ public class BancoDeDados {
 			listaInvestimentos.add(inv2);
 
 			Conta conta2 = new Conta();
-			conta2.setId(BancoDeDados.chaveSequencial++);
+			conta2.setId(BancoDeDados.chaveSequencialConta++);
 			conta2.setNome("Nubank");
 			conta2.addInvestimento(inv2);
 			listaContas.add(conta2);
 			
 			Conta conta3 = new Conta();
-			conta3.setId(BancoDeDados.chaveSequencial++);
+			conta3.setId(BancoDeDados.chaveSequencialConta++);
 			conta3.setNome("Pagbank");			
 			listaContas.add(conta3);
 
-			Usuario fernanda = new Usuario();
-			fernanda.setLogin("fernanda");
-			fernanda.setSenha("123456");
-			fernanda.addConta(conta2);
-			fernanda.addConta(conta3);
-			listaUsuarios.add(fernanda);
+			Usuario usuario2 = new Usuario();
+			usuario2.setId(chaveSequencialUsuario++);
+			usuario2.setLogin("fernanda");
+			usuario2.setSenha("123456");
+			usuario2.addConta(conta2);
+			usuario2.addConta(conta3);
+			listaUsuarios.add(usuario2);
 
 		} catch (Exception e) {
 			System.out.println("erro: " + e.getMessage());
@@ -59,9 +63,15 @@ public class BancoDeDados {
 		}
 	}
 
-	public void adiciona(Conta conta) {
-		conta.setId(BancoDeDados.chaveSequencial++);
+	public void adicionaConta(Usuario usuario, Conta conta) {
+		conta.setId(BancoDeDados.chaveSequencialConta++);
 		BancoDeDados.listaContas.add(conta);
+		usuario.addConta(conta);
+	}
+	
+	public void criaUsuario(Usuario usuario) {
+		usuario.setId(BancoDeDados.chaveSequencialUsuario++);
+		BancoDeDados.listaUsuarios.add(usuario);		
 	}
 
 	public List<Usuario> getUsuarios() {
@@ -80,7 +90,7 @@ public class BancoDeDados {
 
 	}
 
-	public Conta buscaById(Integer id) {
+	public Conta buscaContaById(Integer id) {
 		for (Conta conta : listaContas) {
 			if (conta.getId() == id) {
 				return conta;
