@@ -9,7 +9,7 @@ public class Conta {
 	private String nome;
 	private Date dataAbertura = new Date();
 	private Double valorTotal;
-	private ArrayList<Investimento> listaInvestimentos = new ArrayList<Investimento>(); 
+	private ArrayList<Investimento> listaInvestimentos = new ArrayList<Investimento>();
 
 	public Integer getId() {
 		return id;
@@ -36,6 +36,10 @@ public class Conta {
 	}
 
 	public Double getValorTotal() {
+		valorTotal = 0d;
+		for (Investimento investimento : listaInvestimentos) {
+			valorTotal += investimento.getValorTotal();
+		}
 		return valorTotal;
 	}
 
