@@ -27,7 +27,7 @@ public class BancoDeDados {
 
 			Usuario usuario1 = new Usuario();
 			usuario1.setId(chaveSequencialUsuario++);
-			usuario1.setNome("André");
+			usuario1.setNome("André de Paiva");
 			usuario1.setLogin("andre");
 			usuario1.setSenha("321654");
 			usuario1.addConta(conta1);
@@ -35,7 +35,7 @@ public class BancoDeDados {
 
 			Investimento inv2 = new Investimento();
 			inv2.setNome("Tesouro Direto IPCA+2035");
-			inv2.setValorTotal(20000d);
+			inv2.setValorTotal(2000d);
 			listaInvestimentos.add(inv2);
 
 			Conta conta2 = new Conta();
@@ -44,13 +44,20 @@ public class BancoDeDados {
 			conta2.addInvestimento(inv2);
 			listaContas.add(conta2);
 			
+			Investimento inv3 = new Investimento();
+			inv3.setNome("Nu Caixinha");
+			inv3.setValorTotal(150d);
+			listaInvestimentos.add(inv3);
+			
 			Conta conta3 = new Conta();
 			conta3.setId(BancoDeDados.chaveSequencialConta++);
-			conta3.setNome("Pagbank");			
+			conta3.setNome("Pagbank");		
+			conta3.addInvestimento(inv3);
 			listaContas.add(conta3);
 
 			Usuario usuario2 = new Usuario();
 			usuario2.setId(chaveSequencialUsuario++);
+			usuario2.setNome("Fernanda Gabriele");
 			usuario2.setLogin("fernanda");
 			usuario2.setSenha("123456");
 			usuario2.addConta(conta2);
